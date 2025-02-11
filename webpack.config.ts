@@ -35,6 +35,7 @@ export default (env: IEnvVariable) => {
 
 	const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? 'http://localhost:5001'
 	const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? 'http://localhost:5002'
+	console.log('SHOP_REMOTE_URL', SHOP_REMOTE_URL)
 
 	const config: webpack.Configuration = buldWebpack({
 		mode: env.mode ?? 'development',
@@ -49,8 +50,8 @@ export default (env: IEnvVariable) => {
 			name: 'host',
 			filename: 'remoteEntry.js',
 			remotes: {
-				shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
-				admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
+				shop: `shop@${'https://md-rep-2.vercel.app'}/remoteEntry.js`,
+				admin: `admin@${'https://md-rep-1.vercel.app'}/remoteEntry.js`,
 			},
 			shared: {
 				...PackageJson.devDependencies,

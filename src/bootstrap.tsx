@@ -10,6 +10,7 @@
 // const container = createRoot(root)
 // container.render(<RouterProvider router={router} />)
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './components/App'
 const root = document.querySelector('#root')
 
@@ -18,4 +19,8 @@ if (!root) {
 }
 
 const container = createRoot(root)
-container.render(<App />)
+container.render(
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>
+)
